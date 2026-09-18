@@ -1,12 +1,13 @@
-name: Anforderung
-description: Eine funktionale Anforderung, Qualitätsanforderung oder Randanforderung erfassen
+name: Anforderung (neue Funktionalität)
+description: Eine neue Anforderung an die Applikation erfassen (funktional, Qualität oder Rand)
 title: "[Anforderung]: "
-labels: []
+labels: ["Funktionale Anforderung"]
 body:
   - type: markdown
     attributes:
       value: |
-        Bitte alle Pflichtfelder ausfüllen. Pro Issue wird genau eine Anforderung erfasst.
+        Pro Issue wird genau **eine** Anforderung erfasst. Passe das Label an, falls es
+        sich um eine Qualitäts- oder Randanforderung handelt.
   - type: dropdown
     id: typ
     attributes:
@@ -31,7 +32,7 @@ body:
     attributes:
       label: Beschreibung
       description: Was wird verlangt? Kurz, klar und prüfbar formuliert.
-      placeholder: Das System muss ...
+      placeholder: Die Applikation muss ...
     validations:
       required: true
   - type: textarea
