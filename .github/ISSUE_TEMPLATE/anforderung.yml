@@ -1,64 +1,64 @@
 name: Anforderung (neue Funktionalität)
-description: Eine neue Anforderung an die Applikation erfassen (funktional, Qualität oder Rand)
+description: Eine neue Anforderung nach dem vorgegebenen Anforderungsschema erfassen
 title: "[Anforderung]: "
-labels: ["Funktionale Anforderung"]
 body:
   - type: markdown
     attributes:
       value: |
-        Pro Issue wird genau **eine** Anforderung erfasst. Passe das Label an, falls es
-        sich um eine Qualitäts- oder Randanforderung handelt.
-  - type: dropdown
-    id: typ
-    attributes:
-      label: Anforderungstyp
-      description: Welcher Art entspricht diese Anforderung?
-      options:
-        - Funktionale Anforderung
-        - Qualitätsanforderung
-        - Randanforderung
-    validations:
-      required: true
+        Pro Issue wird genau **eine** Anforderung erfasst. Das Etikett
+        (Funktionale Anforderung / Qualitätsanforderung / Randanforderung)
+        wird nach dem Erstellen **manuell** gesetzt.
   - type: input
-    id: id
+    id: zielsystem
     attributes:
-      label: Anforderungs-ID
-      description: Eindeutige Nummer der Anforderung
-      placeholder: "FA-01 / QA-01 / RA-01"
-    validations:
-      required: true
-  - type: textarea
-    id: beschreibung
-    attributes:
-      label: Beschreibung
-      description: Was wird verlangt? Kurz, klar und prüfbar formuliert.
-      placeholder: Die Applikation muss ...
-    validations:
-      required: true
-  - type: textarea
-    id: akzeptanzkriterien
-    attributes:
-      label: Akzeptanzkriterien
-      description: Woran wird gemessen, dass die Anforderung erfüllt ist?
-      value: |
-        - [ ] 
-        - [ ] 
+      label: Zielsystem
+      description: Welches System oder welche Komponente ist gemeint?
+      placeholder: Die Tagebuch-Applikation
     validations:
       required: true
   - type: dropdown
     id: prioritaet
     attributes:
       label: Priorität
+      description: Rechtliche Verbindlichkeit der Anforderung
       options:
-        - Muss
-        - Soll
-        - Kann
+        - muss
+        - soll
+        - wird
+    validations:
+      required: true
+  - type: dropdown
+    id: systemaktivitaet
+    attributes:
+      label: Systemaktivität
+      description: Wie tritt das System gegenüber dem Benutzer auf?
+      options:
+        - selbständig ausführen
+        - dem Benutzer die Möglichkeit bieten
+        - fähig sein
     validations:
       required: true
   - type: textarea
-    id: bemerkungen
+    id: funktionalitaet
     attributes:
-      label: Bemerkungen
-      description: Optionale Ergänzungen, Abhängigkeiten oder Quellen
+      label: Funktionalität
+      description: Was genau soll geschehen? Kurz, klar und prüfbar formuliert.
+      placeholder: einen neuen Tagebucheintrag speichern
+    validations:
+      required: true
+  - type: textarea
+    id: ergaenzungen
+    attributes:
+      label: Allfällige Ergänzungen
+      description: Objekt, Detail oder Präzisierung zur Funktionalität (optional)
+      placeholder: inklusive Datum und Uhrzeit des Eintrags
+    validations:
+      required: false
+  - type: textarea
+    id: bedingungen
+    attributes:
+      label: Bedingungen
+      description: Unter welchen Voraussetzungen gilt die Anforderung? (optional)
+      placeholder: sofern der Benutzer angemeldet ist
     validations:
       required: false
