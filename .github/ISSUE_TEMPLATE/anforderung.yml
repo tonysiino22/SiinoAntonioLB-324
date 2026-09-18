@@ -1,0 +1,63 @@
+name: Anforderung
+description: Eine funktionale Anforderung, Qualitätsanforderung oder Randanforderung erfassen
+title: "[Anforderung]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bitte alle Pflichtfelder ausfüllen. Pro Issue wird genau eine Anforderung erfasst.
+  - type: dropdown
+    id: typ
+    attributes:
+      label: Anforderungstyp
+      description: Welcher Art entspricht diese Anforderung?
+      options:
+        - Funktionale Anforderung
+        - Qualitätsanforderung
+        - Randanforderung
+    validations:
+      required: true
+  - type: input
+    id: id
+    attributes:
+      label: Anforderungs-ID
+      description: Eindeutige Nummer der Anforderung
+      placeholder: "FA-01 / QA-01 / RA-01"
+    validations:
+      required: true
+  - type: textarea
+    id: beschreibung
+    attributes:
+      label: Beschreibung
+      description: Was wird verlangt? Kurz, klar und prüfbar formuliert.
+      placeholder: Das System muss ...
+    validations:
+      required: true
+  - type: textarea
+    id: akzeptanzkriterien
+    attributes:
+      label: Akzeptanzkriterien
+      description: Woran wird gemessen, dass die Anforderung erfüllt ist?
+      value: |
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+  - type: dropdown
+    id: prioritaet
+    attributes:
+      label: Priorität
+      options:
+        - Muss
+        - Soll
+        - Kann
+    validations:
+      required: true
+  - type: textarea
+    id: bemerkungen
+    attributes:
+      label: Bemerkungen
+      description: Optionale Ergänzungen, Abhängigkeiten oder Quellen
+    validations:
+      required: false
