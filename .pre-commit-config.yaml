@@ -1,0 +1,37 @@
+# Aufgabe 2 - LB 324
+# Zwei verschiedene Stages:
+#   pre-commit -> formatiert den Code automatisch bei jedem commit
+#   pre-push   -> laesst die Tests laufen bei jedem push
+# Damit beide Hook-Typen installiert werden, siehe default_install_hook_types.
+
+default_install_hook_types: [pre-commit, pre-push]
+
+repos:
+  # --- Formatierung: laeuft bei jedem COMMIT ---
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+        stages: [pre-commit]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        stages: [pre-commit]
+      - id: end-of-file-fixer
+        stages: [pre-commit]
+      - id: check-yaml
+        stages: [pre-commit]
+
+  # --- Tests: laufen bei jedem PUSH ---
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest (alle Tests)
+        entry: pytest
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]

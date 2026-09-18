@@ -1,0 +1,30 @@
+﻿name: Tests
+
+# Aufgabe 3 - LB 324
+# Laeuft AUSSCHLIESSLICH bei pull requests, deren Ziel-Ast "dev" ist.
+# Kein push-Trigger, kein workflow_dispatch -> keine weiteren Aktionen.
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Abhängigkeiten installieren
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Tests ausführen
+        run: pytest -v
