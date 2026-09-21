@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import datetime
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import os
 from dotenv import load_dotenv
-
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -15,7 +14,8 @@ entries = []
 @dataclass
 class Entry:
     content: str
-    timestamp: datetime = datetime.now()
+    happiness: str = ""
+    timestamp: datetime = field(default_factory=datetime.now)
 
 
 @app.route("/")
@@ -46,8 +46,9 @@ def logout():
 @app.route("/add_entry", methods=["POST"])
 def add_entry():
     content = request.form.get("content")
+    happiness = request.form.get("happiness", "")
     if content:
-        entry = Entry(content=content)
+        entry = Entry(content=content, happiness=happiness)
         entries.append(entry)
     return redirect(url_for("index"))
 
