@@ -1,11 +1,11 @@
-# LB 324
+﻿# LB 324
 
 Tagebbbuch-Applikation mit CI/CD-Umgebung.
 
 ## Laufende Applikation
 
 <!-- TODO: URL nach dem Azure-Deployment hier eintragen -->
-https://siinoantonio-lb324.azurewebsites.net
+https://siinoantonio-lb324-bgftb3ghfme9cmh7.switzerlandnorth-01.azurewebsites.net
 
 ## Ast-Strategie
 
